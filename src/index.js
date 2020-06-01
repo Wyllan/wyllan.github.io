@@ -15,15 +15,16 @@ class Container extends React.Component {
   state = { isMounted: true };
 
   render() {
-    const { isMounted = true } = this.state;
+    // const { isMounted = true } = this.state;
     return (
-      <>
-        <button onClick={() => this.setState(state => ({ isMounted: !state.isMounted }))}>
-          {isMounted ? "Unmount" : "Mount"}
-        </button>
-        {isMounted && <App />}
-        {isMounted && <div>Scroll to zoom, drag to rotate</div>}
-      </>
+      <App />
+      //   <>
+      //     <button onClick={() => this.setState(state => ({ isMounted: !state.isMounted }))}>
+      //       {isMounted ? "Unmount" : "Mount"}
+      //     </button>
+      //     {isMounted && <App />}
+      //     {isMounted && <div>Scroll to zoom, drag to rotate</div>}
+      //   </>
     )
   }
 }
