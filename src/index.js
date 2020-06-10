@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Rain from './Rain';
 import * as serviceWorker from './serviceWorker';
 
 // ReactDOM.render(
@@ -17,7 +18,7 @@ class Container extends React.Component {
   render() {
     // const { isMounted = true } = this.state;
     return (
-      <App />
+      <Rain />
       //   <>
       //     <button onClick={() => this.setState(state => ({ isMounted: !state.isMounted }))}>
       //       {isMounted ? "Unmount" : "Mount"}
