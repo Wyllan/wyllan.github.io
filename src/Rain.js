@@ -21,7 +21,7 @@ const Rain = () => {
     const material = new THREE.MeshBasicMaterial({ color: 0x123456 })
     const cube = new THREE.Mesh(geometry, material)
 
-    scene.fog = new THREE.FogExp2(0x11111f, 0.0028);
+    scene.fog = new THREE.FogExp2(0x11111f, 0.0022);
     renderer.setClearColor(scene.fog.color);
 
 
