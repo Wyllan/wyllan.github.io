@@ -85,10 +85,12 @@ const Rain = () => {
     rainMaterial = new THREE.PointsMaterial({
       color: 0xaaaaaa,
       size: 0.1,
-      transparent: true
+      transparent: true,
+      refractionRatio: 0.95
     });
+    // rainMaterial.envMap.mapping = THREE.CubeRefractionMapping;
     rain = new THREE.Points(rainGeo, rainMaterial);
-    scene.add(rain);
+    // scene.add(rain);
 
 
 

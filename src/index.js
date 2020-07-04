@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Rain from './Rain';
 import * as serviceWorker from './serviceWorker';
+import 'semantic-ui-css/semantic.min.css'
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -13,19 +14,19 @@ import * as serviceWorker from './serviceWorker';
 // );
 
 class Container extends React.Component {
-  state = { isMounted: true };
+  //   state = { isMounted: true };
 
   render() {
-    // const { isMounted = true } = this.state;
+    //     // const { isMounted = true } = this.state;
     return (
-      <Rain />
-      //   <>
-      //     <button onClick={() => this.setState(state => ({ isMounted: !state.isMounted }))}>
-      //       {isMounted ? "Unmount" : "Mount"}
-      //     </button>
-      //     {isMounted && <App />}
-      //     {isMounted && <div>Scroll to zoom, drag to rotate</div>}
-      //   </>
+      <App classname='App' />
+      //       //   <>
+      //       //     <button onClick={() => this.setState(state => ({ isMounted: !state.isMounted }))}>
+      //       //       {isMounted ? "Unmount" : "Mount"}
+      //       //     </button>
+      //       //     {isMounted && <App />}
+      //       //     {isMounted && <div>Scroll to zoom, drag to rotate</div>}
+      //       //   </>
     )
   }
 }
