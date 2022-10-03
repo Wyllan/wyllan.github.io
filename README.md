@@ -1,2 +1,6 @@
-# git-website
-This is the repo that the code for a GitHub hosted webpage will go.
+# wyllan.github.io
+
+
+## Vite Typing
+
+https://vitejs.dev/guide/features.html#client-types
