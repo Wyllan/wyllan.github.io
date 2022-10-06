@@ -15,13 +15,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vite/client", "@testing-library/jest-dom"],
-    "baseUrl": "src",
+    "types": ["@testing-library/jest-dom"],
     "paths": {
       "test-utils": ["./utils/test-utils"]
     }
   },
-  "include": ["src"],
-  "exclude": ["**/node_modules"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
