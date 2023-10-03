@@ -12,21 +12,11 @@ dist
 dist-ssr
 *.local
 
-.pnp.*
-.yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
-.editorconfig
 *.suo
 *.ntvs*
 *.njsproj
