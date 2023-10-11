@@ -3,9 +3,9 @@ import NavItem from "../navigation/NavItem";
 
 export default function Taskbar() {
   return (
-    <div className="taskbar flex">
-      <button>Start</button>
+    <div className="taskbar flex items-center">
       <NavBar>
+        <NavItem>START</NavItem>
         <NavItem url={"about"}>About</NavItem>
       </NavBar>
     </div>
