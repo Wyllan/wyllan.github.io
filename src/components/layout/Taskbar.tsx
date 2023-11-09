@@ -3,7 +3,7 @@ import NavItem from "../navigation/NavItem";
 
 export default function Taskbar() {
   return (
-    <div className="taskbar flex items-center justify-between bg-stone-300">
+    <div className="taskbar flex items-center justify-between border-t border-white bg-stone-300">
       <NavBar>
         <NavItem>START</NavItem>
         <NavItem url={"about"}>About</NavItem>
@@ -14,5 +14,5 @@ export default function Taskbar() {
 }
 
 function Widget() {
-  return <div className=" m-2">WIDGET</div>;
+  return <div className="widget m-1">WIDGET</div>;
 }

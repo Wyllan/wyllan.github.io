@@ -29,10 +29,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; */
 }
 
 h1 {
@@ -40,7 +40,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -50,14 +50,55 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+} */
+button {
+  background: theme("colors.neutral.300");
+  box-shadow: 1px 1px theme("colors.neutral.700");
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid theme("colors.neutral.500");
+  border-bottom: 1px solid theme("colors.neutral.500");
+  min-height: 20px;
+  min-width: 75px;
+  outline: none;
+  padding: 0.1em 0.2em;
+  cursor: pointer;
 }
-button:hover {
+
+button:active {
+  background: theme("colors.neutral.300");
+  box-shadow: -1px -1px theme("colors.neutral.700");
+  border-top: 1px solid theme("colors.neutral.500");
+  border-left: 1px solid theme("colors.neutral.500");
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  min-height: 20px;
+  min-width: 75px;
+  outline: none;
+  padding: 0.2em 0.4em;
+  cursor: pointer;
+}
+
+.widget {
+  background: theme("colors.neutral.300");
+  box-shadow: -1px -1px theme("colors.neutral.700");
+  border-top: 1px solid theme("colors.neutral.500");
+  border-left: 1px solid theme("colors.neutral.500");
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  min-height: 20px;
+  min-width: 75px;
+  outline: none;
+  padding: 0.2em 0.4em;
+}
+
+/* button:hover {
   border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -67,7 +108,20 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  /* button {
     background-color: #f9f9f9;
-  }
+  } */
+}
+
+.window {
+  box-shadow: theme("boxShadow.window");
+  background: theme("colors.neutral.300");
+  box-shadow: theme("boxShadow.button");
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid theme("colors.neutral.500");
+  border-bottom: 1px solid theme("colors.neutral.500");
+  height: 120px;
+  text-align: center;
+  width: 290px;
 }
