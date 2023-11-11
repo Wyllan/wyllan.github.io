@@ -116,12 +116,29 @@ button:focus-visible {
 .window {
   box-shadow: theme("boxShadow.window");
   background: theme("colors.neutral.300");
-  box-shadow: theme("boxShadow.button");
   border-top: 1px solid white;
   border-left: 1px solid white;
   border-right: 1px solid theme("colors.neutral.500");
   border-bottom: 1px solid theme("colors.neutral.500");
-  height: 120px;
+  /* height: 120px; */
   text-align: center;
-  width: 290px;
+  /* width: 290px; */
+}
+
+.window h3 {
+  align-items: center;
+  background: linear-gradient(90deg, #08246b, #a5cbf7);
+  color: white;
+  display: flex;
+  font-weight: bold;
+  height: 18px;
+}
+
+.window header * {
+  margin-left: 2px;
+}
+
+.window header img {
+  height: 16px;
+  width: 16px;
 }

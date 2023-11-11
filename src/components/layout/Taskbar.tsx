@@ -1,13 +1,12 @@
-import NavBar from "../navigation/NavBar";
-import NavItem from "../navigation/NavItem";
+import TaskbarItem from "./TaskbarItem";
 
 export default function Taskbar() {
   return (
     <div className="taskbar flex items-center justify-between border-t border-white bg-stone-300">
-      <NavBar>
-        <NavItem>START</NavItem>
-        <NavItem url={"about"}>About</NavItem>
-      </NavBar>
+      <ul className="flex">
+        <TaskbarItem>START</TaskbarItem>
+        <TaskbarItem url={"about"}>About</TaskbarItem>
+      </ul>
       <Widget />
     </div>
   );
