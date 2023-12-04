@@ -1,6 +1,6 @@
-import TaskbarItem from "./TaskbarItem";
+import { TaskbarItem } from "@components";
 
-export default function Taskbar() {
+export function Taskbar() {
   return (
     <div className="taskbar flex items-center justify-between border-t border-white bg-stone-300">
       <ul className="flex">

@@ -2,7 +2,7 @@ import { Transition, Dialog } from "@headlessui/react";
 import { useState, useEffect, ReactNode, Fragment, useRef } from "react";
 import Draggable from "react-draggable";
 import GridLayout, { Layout, Responsive, WidthProvider } from "react-grid-layout";
-import Window from "./Window";
+import { Window } from "@components";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -26,7 +26,7 @@ function calcCells(): Dimensions {
   return { width, cols, rowHeight: height / rows };
 }
 
-export default function Desktop() {
+export function Desktop() {
   const [dimensions, setDimensions] = useState<Dimensions>(calcCells());
 
   useEffect(() => {
@@ -42,6 +42,7 @@ export default function Desktop() {
   return (
     <>
       <GridLayout
+        id="desktop"
         className="flex grow overflow-hidden"
         {...dimensions}
         compactType={null}

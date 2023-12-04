@@ -1,10 +1,10 @@
-import { Outlet } from "react-router-dom";
-import Layout from "../components/layout/Layout";
+import { Desktop, Taskbar } from "@components";
 
 export default function Root() {
   return (
-    <Layout>
-      <Outlet></Outlet>
-    </Layout>
+    <div className="flex min-h-screen min-w-full flex-col justify-end bg-sky-600">
+      <Desktop />
+      <Taskbar />
+    </div>
   );
 }
