@@ -1,4 +1,4 @@
-import { TaskbarItem } from "@components";
+import { TaskbarItem } from ".";
 
 export function Taskbar() {
   return (

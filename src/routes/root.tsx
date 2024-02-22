@@ -1,4 +1,4 @@
-import { Desktop, Taskbar } from "@components";
+import { Desktop, Taskbar } from "../components";
 
 export default function Root() {
   return (
