@@ -1,0 +1,32 @@
+.Cell {
+  /* --size: calc(6vw); */
+  /* --min-size: calc(6vh);
+  --max-size: calc(8vh); */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--size) * 1px);
+  /* max-width: var(--max-size); */
+  /* min-width: var(--min-size); */
+  /* height: calc(var(--size) * 1px); */
+  /* max-height: var(--max-size); */
+  /* min-height: var(--min-size); */
+  /* padding: 8px; */
+}
+
+.odd {
+  background-color: #eef3f7;
+}
+
+.even {
+  background-color: #fff;
+}
+
+.highlight {
+  background-color: #b7fbd3;
+}
+
+.highlight.over {
+  background-color: #7ef3af;
+}
