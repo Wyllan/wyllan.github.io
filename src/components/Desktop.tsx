@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import React from "react";
-import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, DragOverlay, DragStartEvent, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { Cell, CellProps } from "./cell";
 
 import styles from "./Desktop.module.css";
@@ -23,8 +23,8 @@ function calcCells(): Dimensions {
   const width = window.innerWidth;
   const height = window.innerHeight;
 
-  const rows = Math.floor(height / 64);
-  const cols = Math.floor(width / 64) - 1;
+  const rows = Math.floor(height / 64) - 2;
+  const cols = Math.floor(width / 64);
 
   return { width, cols, rows, rowHeight: height / rows, colWidth: width / cols };
 }
@@ -33,6 +33,22 @@ export function Desktop() {
   const [desktop, setDesktop] = useState<{ grid: CellProps[][] } & Dimensions>(generateDesktop(calcCells()));
   const [shortcuts, setShortcuts] = useState(() => generateShortcuts(desktop));
   const [movingShortcut, setMovingShortcut] = useState<ShortcutProps | null>(null);
+
+  const mouseSensor = useSensor(MouseSensor, {
+    // Require the mouse to move by 10 pixels before activating
+    activationConstraint: {
+      distance: 5,
+    },
+  });
+  const touchSensor = useSensor(TouchSensor, {
+    // Press delay of 250ms, with tolerance of 5px of movement
+    activationConstraint: {
+      delay: 250,
+      tolerance: 5,
+    },
+  });
+
+  const sensors = useSensors(mouseSensor, touchSensor);
 
   useEffect(() => {
     let resizeDelay: number;
@@ -52,7 +68,7 @@ export function Desktop() {
         return;
       }
 
-      const { x: movingPieceX, y: movingPieceY } = movingShortcut.position;
+      const { x: movingShortcutX, y: movingShortcutY } = movingShortcut.position;
       const [cellY, cellX] = event.over.id.toString().split("-").map(Number);
 
       const potentialExistingPiece = shortcuts[cellY][cellX];
@@ -67,7 +83,7 @@ export function Desktop() {
         // Clone shortcuts
         const newPieces = shortcuts.map((row) => row.slice());
         // Place new
-        delete newPieces[movingPieceY][movingPieceX];
+        delete newPieces[movingShortcutY][movingShortcutX];
         newPieces[cellY][cellX] = newPiece;
 
         setShortcuts(newPieces);
@@ -96,6 +112,7 @@ export function Desktop() {
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
         modifiers={[restrictToWindowEdges]}
+        sensors={sensors}
       >
         <div className={styles.Desktop} style={{ "--cols": desktop.cols, "--size": desktop.colWidth } as React.CSSProperties}>
           {desktop.grid.map((row, y) =>
@@ -124,6 +141,7 @@ export function Desktop() {
             }),
           )}
         </div>
+        {/* <DragOverlay>{movingShortcut?.id ? <Shortcut {...movingShortcut} /> : null}</DragOverlay> */}
       </DndContext>
     </div>
   );
@@ -162,65 +180,3 @@ function generateShortcuts({ grid, cols, rows }: Desktop) {
 
   return shortcuts;
 }
-
-// const ButtonC = ({ title, onClick }) => {
-//   return (
-//     <button
-//       style={{ backgroundColor: "lightblue", padding: "10px", borderRadius: "5px", border: "none", cursor: "pointer" }}
-//       onClick={onClick}
-//     >
-//       <h2>{title}</h2>
-//       {/* <p>This is my button component!</p> */}
-//     </button>
-//   );
-// };
-
-// export const Shortcut = (): ReactNode => {
-//   const [showModal, setShowModal] = useState(false);
-//   return (
-//     <Popover>
-//       <PopoverTrigger asChild>
-//         <Button className="bg-slate-400">Open popover</Button>
-//       </PopoverTrigger>
-//       <PopoverContent className="w-80">
-//         <div className="grid gap-4">
-//           <div className="space-y-2">
-//             <h4 className="font-medium leading-none">Dimensions</h4>
-//             <p className="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
-//           </div>
-//           <div className="grid gap-2"></div>
-//         </div>
-//       </PopoverContent>
-//     </Popover>
-//   );
-// };
-// export const DesktopShortcut = ({ name, onClick, point }: DesktopShortcut): ReactNode => {
-//   const [showModal, setShowModal] = useState(false);
-//   return (
-//     <Popover>
-//       <PopoverTrigger asChild>
-//         <button className="bg-slate-400">Open popover</button>
-//       </PopoverTrigger>
-//       <PopoverContent className="w-80">
-//         <div className="grid gap-4">
-//           <div className="space-y-2">
-//             <h4 className="font-medium leading-none">Dimensions</h4>
-//             <p className="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
-//           </div>
-//           <div className="grid gap-2"></div>
-//         </div>
-//       </PopoverContent>
-//     </Popover>
-//     // <button onClick={() => setShowModal(true)} className="bg-slate-400" key={name} data-grid={{ ...point, w: 1, h: 1, isResizable: false }}>
-//     //   {name}
-//     //   {showModal &&
-//     //     createPortal(
-//     //       <div className="modal">
-//     //         <div>I'm a modal dialog</div>
-//     //         <button onClick={() => setShowModal(false)}>Close</button>
-//     //       </div>,
-//     //       document.getElementById("desktop")!,
-//     //     )}
-//     // </button>
-//   );
-// };
