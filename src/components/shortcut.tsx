@@ -26,28 +26,6 @@ export function Shortcut({ clone, disabled, id, odd, position, ...props }: Short
   // const test = (event) => console.log(event);
 
   return (
-    // <Popover>
-    //   <PopoverTrigger asChild>
-    //     <div
-    //       ref={setNodeRef}
-    //       style={{
-    //         opacity: isDragging ? 0.5 : undefined,
-    //         ...style,
-    //       }}
-    //       // onClick={() => alert("anything")}
-    //       className={cn(styles.Shortcut, odd ? styles.odd : styles.even, disabled && styles.disabled, clone && styles.clone)}
-    //       data-position={JSON.stringify(position)}
-    //       // aria-describedby={`piece id ${id}`}
-    //       // aria-roledescription="You have selected a piece"
-    //       {...props}
-    //       {...listeners}
-    //       {...attributes}
-    //     >
-    //       {props.children}
-    //     </div>
-    //   </PopoverTrigger>
-    //   <PopoverContent>Test</PopoverContent>
-    // </Popover>
     <Dialog>
       <DialogTrigger asChild>
         <div
